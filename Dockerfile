@@ -1,6 +1,9 @@
 # Dockerfile
 
-FROM python:3.10
+FROM python:3.10-slim
+
+# Update the base image to ensure it has the latest security patches
+RUN apt-get update && apt-get upgrade -y && apt-get clean
 
 WORKDIR /app
 
