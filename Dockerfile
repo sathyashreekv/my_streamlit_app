@@ -1,16 +1,13 @@
-# Dockerfile
-
 FROM python:3.10-slim-bullseye
-
-# Update the base image to ensure it has the latest security patches
-RUN apt-get update && apt-get upgrade -y && apt-get clean
 
 WORKDIR /app
 
 COPY . /app
 
-RUN pip install --upgrade pip && \
-    pip install -r requirements.txt
+RUN apt-get update && apt-get install -y gcc && \
+    pip install --upgrade pip && \
+    pip install -r requirements.txt && \
+    apt-get clean
 
 EXPOSE 8501
 
