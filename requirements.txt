@@ -1,4 +1,6 @@
 streamlit 
 pymongo
 bcrypt
-
+bson
+os
+PIL
