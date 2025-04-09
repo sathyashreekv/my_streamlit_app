@@ -1,13 +1,18 @@
 FROM python:3.10-slim-bullseye
 
+# Update system
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 
 COPY . /app
 
-RUN apt-get update && apt-get install -y gcc && \
-    pip install --upgrade pip && \
-    pip install -r requirements.txt && \
-    apt-get clean
+# Install Python deps
+RUN pip install --upgrade pip && \
+    pip install -r requirements.txt
 
 EXPOSE 8501
 
