@@ -3,7 +3,8 @@ from bson import ObjectId
 from pymongo import MongoClient
 import os
 
-client = MongoClient("mongodb://localhost:27017/pets")
+# client = MongoClient("mongodb://localhost:27017/pets")
+client =MongoClient("mongodb://host.docker.internal:27017/pets")
 db = client["pet_database"]
 users_collection = db["users"]
 pet_collection = db["pets"]
